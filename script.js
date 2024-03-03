@@ -21,6 +21,6 @@ window.addEventListener('scroll', () => {
       const circle = circles.find(circle => circle.dataset.circle === asset.dataset.asset)
       const {left, top, width, height} = circle.getBoundingClientRect();
       asset.style.left = `${left + (width / 2)}px`;
-      asset.style.top = `${top + (height / 2)}px`;
+      asset.style.top = `${top + (height / 2) + 2}px`;
     })
   }

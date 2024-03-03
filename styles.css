@@ -4,6 +4,7 @@
   --rY: 0deg;
   --tX: 0%;
   --tY: 0%;
+  --tZ: 0px;
   --sC: 1;
 }
 
@@ -16,9 +17,13 @@ body {
   padding: 0;
   margin: 0;
   min-height: 500vh;
-  background-color: #989898;
+  background-color: #bbbbbb;
   font-family: "Open Sans Hebrew", "Helvetica Neue", tahoma, Helvetica, Arial, sans-serif;
   color: #2d2d2d;
+}
+
+g#roads path {
+  stroke: #636363;
 }
 
 body>section {
@@ -79,7 +84,7 @@ p {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(var(--rX)) rotateZ(var(--rZ)) rotateY(var(--rY)) translate(var(--tX), var(--tY)) scale(var(--sC));
+  transform: rotateX(var(--rX)) rotateZ(var(--rZ)) rotateY(var(--rY)) translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ)) scale(var(--sC));
   animation: cube 1s linear;
 }
 
@@ -99,11 +104,13 @@ p {
 .side img {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  /* transform: translateX(-50%); */
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  /* transform: rotate(-10.7deg) scale(0.63) translate(-81.9%, -4.7%); */
+  /* opacity: 0.25; */
 }
 
 .side svg {
@@ -121,12 +128,15 @@ p {
 
 /* ASSETS */
 
+.base-image {}
+
 .asset {
   position: fixed;
   transform: translate(-50%, calc(-100% - 14px));
-  width: clamp(90px, 20vw, 130px);
+  width: clamp(150px, 50vw, 180px);
   text-align: center;
   font-family: 10px;
+  font-size: 14px;
 }
 
 .asset>div {
@@ -163,13 +173,13 @@ p {
 
 .asset video {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
   object-fit: cover;
 }
 
 .asset img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
   object-fit: cover;
 }
 
@@ -183,4 +193,12 @@ p {
   z-index: 3;
   display: grid;
   padding: 10px;
+}
+
+#labels {
+  opacity: 0;
+}
+
+#dots circle:not([data-circle]) {
+  opacity: 0;
 }

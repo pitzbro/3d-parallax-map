@@ -6,7 +6,7 @@ const assets2 = document.querySelectorAll('[data-asset]');
 inputs.forEach(input => {
   input.oninput = () => {
     const v = input.getAttribute('name');
-    const units = v.startsWith('r') ? 'deg' : v.startsWith('t') ? '%' : '';
+    const units = v.startsWith('r') ? 'deg' : v === 'tZ' ? 'px' : v.startsWith('t') ? '%' : '';
     const label = labels.find(l => l.getAttribute('for') === v);
     const valueInput = label.querySelector('span');
     
