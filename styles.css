@@ -85,7 +85,7 @@ p {
 
 @keyframes cube {
   to {
-    transform: rotateX(61deg) rotateZ(-59deg) rotateY(0deg) scale(2.7) translate(9vw, 3vh);
+    transform: rotateX(79deg) rotateZ(15deg) rotateY(0deg) scale(1.7) translate(-5%, 8%);
   }
 }
 
