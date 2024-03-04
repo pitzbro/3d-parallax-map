@@ -1,24 +1,25 @@
 :root {
-  --rZ: 0deg;
+  --rZ: 25deg;
   --rX: 0deg;
   --rY: 0deg;
-  --tX: 0%;
-  --tY: 0%;
+  --tX: 5%;
+  --tY: -2%;
   --tZ: 0px;
-  --sC: 1;
+  --sC: 0.7;
 }
 
 @font-face {
-  font-family: 'Open Sans Hebrew';
-  src: url('./fonts/OpenSansHebrewRegular.woff');
+  font-family: "Open Sans Hebrew";
+  src: url("./fonts/OpenSansHebrewRegular.woff");
 }
 
 body {
   padding: 0;
   margin: 0;
   min-height: 500vh;
-  background-color: #bbbbbb;
-  font-family: "Open Sans Hebrew", "Helvetica Neue", tahoma, Helvetica, Arial, sans-serif;
+  background-color: #b8b8b8;
+  font-family: "Open Sans Hebrew", "Helvetica Neue", tahoma, Helvetica, Arial,
+    sans-serif;
   color: #2d2d2d;
 }
 
@@ -26,7 +27,7 @@ g#roads path {
   stroke: #636363;
 }
 
-body>section {
+body > section {
   position: relative;
   background-color: #fff;
   max-width: 710px;
@@ -51,7 +52,7 @@ p {
 
 @keyframes color {
   to {
-    fill: #DA0A08;
+    fill: #da0a08;
   }
 }
 
@@ -77,20 +78,45 @@ p {
   position: fixed;
   width: 100%;
   height: 100%;
-  perspective: 100vmin;
+  perspective: 800px;
+  display: grid;
+  place-items: center;
+  place-content: center;
 }
 
 .cube {
   width: 100%;
   height: 100%;
+  width: 300vmin;
+  height: 300vmin;
   transform-style: preserve-3d;
-  transform: rotateX(var(--rX)) rotateZ(var(--rZ)) rotateY(var(--rY)) translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ)) scale(var(--sC));
+  transform: translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ))
+    rotateX(var(--rX)) rotateY(var(--rY)) rotateZ(var(--rZ)) scale(var(--sC));
   animation: cube 1s linear;
 }
 
 @keyframes cube {
   to {
-    transform: rotateX(79deg) rotateZ(15deg) rotateY(0deg) scale(1.7) translate(-5%, 8%);
+    /* transform: translateX(5%) translateY(-2%) translateZ(0px) rotateX(75deg)
+      rotateY(0deg) rotateZ(25deg) scale(0.7); */
+    transform: matrix3d(
+      0.311868,
+      -0.962584,
+      -1.10733,
+      0,
+      1.46722,
+      0.204604,
+      0.235369,
+      0,
+      0,
+      -0.75471,
+      0.656059,
+      0,
+      136.65,
+      409.95,
+      195,
+      1
+    );
   }
 }
 
@@ -128,8 +154,6 @@ p {
 
 /* ASSETS */
 
-.base-image {}
-
 .asset {
   position: fixed;
   transform: translate(-50%, calc(-100% - 14px));
@@ -139,15 +163,17 @@ p {
   font-size: 14px;
 }
 
-.asset>div {
+.asset > div {
   position: relative;
   background-color: #fff;
   padding: 0 0 10px;
   box-shadow: 0px 1px 6px 0px rgb(0 0 0 / 50%);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-.asset>div::after {
+.asset > div::after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -160,15 +186,14 @@ p {
   border-color: #fff transparent transparent transparent;
 }
 
-.asset>div>span {
-  padding: 1px 10px;
+.asset > div > span {
+  padding: 10px 10px 6px;
   display: block;
 }
 
-.asset>span {
+.asset > span {
   font-size: 20px;
   font-weight: 600;
-
 }
 
 .asset video {

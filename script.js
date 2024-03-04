@@ -17,6 +17,8 @@ window.addEventListener('scroll', () => {
 
     document.body.style.setProperty('--scroll',prec);
 
+    console.log('prec', prec)
+
     assets.forEach(asset => {
       const circle = circles.find(circle => circle.dataset.circle === asset.dataset.asset)
       const {left, top, width, height} = circle.getBoundingClientRect();

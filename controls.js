@@ -3,6 +3,8 @@ const labels = Array.from(document.querySelectorAll('.controls label'));
 const circles2 = Array.from(document.querySelectorAll('[data-circle]'));
 const assets2 = document.querySelectorAll('[data-asset]');
 
+const cube = document.querySelector('.cube');
+
 inputs.forEach(input => {
   input.oninput = () => {
     const v = input.getAttribute('name');
@@ -15,6 +17,11 @@ inputs.forEach(input => {
     valueInput.innerText = inputString;
     
     document.documentElement.style.setProperty(`--${v}`, inputString);
+
+    var style = window.getComputedStyle(cube);
+    var matrix = style.transform;
+
+    console.log(matrix)
     
     assets2.forEach(asset => {
       const circle = circles2.find(circle => circle.dataset.circle === asset.dataset.asset)
