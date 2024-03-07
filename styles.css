@@ -30,6 +30,14 @@ body.military {
   font-family: 'Courier New', Courier, monospace;
 }
 
+body.military #territories {
+  fill: #444;
+}
+
+body.military .gaza-teritory {
+  fill: rgb(68 68 68 / 42%);
+}
+
 .military-img {
   opacity: 0;
   transition: opacity 2s;

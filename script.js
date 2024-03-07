@@ -2,7 +2,7 @@ const circles = Array.from(document.querySelectorAll("[data-circle]"));
 const assets = document.querySelectorAll("[data-asset]");
 
 var svg = document.getElementById("main-svg");
-svg.pauseAnimations();
+// svg.pauseAnimations();
 
 const animation = document.querySelector("#t-animation");
 
@@ -40,7 +40,7 @@ function moveAssets() {
     asset.style.left = `${left + width / 2}px`;
     asset.style.top = `${top + height / 2 + 2}px`;
 
-    // animateTer(prec);
+    animateTer(prec);
   });
 }
 
@@ -52,27 +52,27 @@ function animateTer(prec) {
 
   if (st > lastScrollTop) {
     console.log("scrolled down starting animation!");
-    svg.unpauseAnimations();
+    // svg.unpauseAnimations();
     animation.beginElement(0);
-    int = setInterval(() => {
-      console.log(
-        "prec",
-        parseFloat(prec).toFixed(1),
-        "animationPrec",
-        parseFloat(animationPrec).toFixed(1)
-      );
-      if (parseFloat(prec).toFixed(1) <= parseFloat(animationPrec).toFixed(1)) {
-        console.log("pausing animation!");
-        clearInterval(int);
-        svg.pauseAnimations();
-      }
-    }, 0.01);
+    // int = setInterval(() => {
+    //   console.log(
+    //     "prec",
+    //     parseFloat(prec).toFixed(1),
+    //     "animationPrec",
+    //     parseFloat(animationPrec).toFixed(1)
+    //   );
+    //   if (parseFloat(prec).toFixed(1) <= parseFloat(animationPrec).toFixed(1)) {
+    //     console.log("pausing animation!");
+    //     clearInterval(int);
+    //     svg.pauseAnimations();
+    //   }
+    // }, 0.01);
   } else if (st < lastScrollTop) {
     console.log("scrolled up", animation.getCurrentTime());
-    animation.beginElement(0);
-    svg.pauseAnimations();
-    svg.setCurrentTime(0);
-    clearInterval(int);
+    // animation.endElement(0);
+    // svg.pauseAnimations();
+    // svg.setCurrentTime(0);
+    // clearInterval(int);
   } // else was horizontal scroll
   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }
