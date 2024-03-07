@@ -21,13 +21,38 @@ body {
   font-family: "Open Sans Hebrew", "Helvetica Neue", tahoma, Helvetica, Arial,
     sans-serif;
   color: #2d2d2d;
+
+  transition: background-color 2s;
+}
+
+body.military {
+  background-color: #cbcfbd;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.military-img {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+
+body.military .military-img {
+  opacity: 1;
+}
+
+g#roads {
+  transition: opacity 2s;
+}
+
+body.military g#roads {
+  opacity: 0;
 }
 
 g#roads path {
   stroke: #636363;
 }
 
-body > section {
+body>section {
   position: relative;
   background-color: #fff;
   max-width: 710px;
@@ -90,8 +115,7 @@ p {
   width: 300vmin;
   height: 300vmin;
   transform-style: preserve-3d;
-  transform: translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ))
-    rotateX(var(--rX)) rotateY(var(--rY)) rotateZ(var(--rZ)) scale(var(--sC));
+  transform: translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ)) rotateX(var(--rX)) rotateY(var(--rY)) rotateZ(var(--rZ)) scale(var(--sC));
   animation: cube 1s linear;
 }
 
@@ -99,24 +123,22 @@ p {
   to {
     /* transform: translateX(5%) translateY(-2%) translateZ(0px) rotateX(75deg)
       rotateY(0deg) rotateZ(25deg) scale(0.7); */
-    transform: matrix3d(
-      0.796956,
-      0.0180461,
-      0.0673488,
-      0,
-      -0.0697246,
-      0.206267,
-      0.7698,
-      0,
-      6.93889e-18,
-      -0.965926,
-      0.258819,
-      0,
-      27.06,
-      -81.18,
-      62,
-      1
-    );
+    transform: matrix3d(0.796956,
+        0.0180461,
+        0.0673488,
+        0,
+        -0.0697246,
+        0.206267,
+        0.7698,
+        0,
+        6.93889e-18,
+        -0.965926,
+        0.258819,
+        0,
+        27.06,
+        -81.18,
+        62,
+        1);
   }
 }
 
@@ -159,11 +181,10 @@ p {
   transform: translate(-50%, calc(-100% - 14px));
   width: clamp(150px, 50vw, 180px);
   text-align: center;
-  font-family: 10px;
   font-size: 14px;
 }
 
-.asset > div {
+.asset>div {
   position: relative;
   background-color: #fff;
   padding: 0 0 10px;
@@ -173,7 +194,7 @@ p {
   overflow: hidden;
 }
 
-.asset > div::after {
+.asset>div::after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -186,12 +207,12 @@ p {
   border-color: #fff transparent transparent transparent;
 }
 
-.asset > div > span {
+.asset>div>span {
   padding: 10px 10px 6px;
   display: block;
 }
 
-.asset > span {
+.asset>span {
   font-size: 20px;
   font-weight: 600;
 }
@@ -213,7 +234,7 @@ p {
 .controls {
   position: fixed;
   right: 0;
-  top: 0;
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 3;
   display: grid;

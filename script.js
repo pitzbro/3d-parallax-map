@@ -1,28 +1,78 @@
-const circles = Array.from(document.querySelectorAll('[data-circle]'));
-const assets = document.querySelectorAll('[data-asset]');
+const circles = Array.from(document.querySelectorAll("[data-circle]"));
+const assets = document.querySelectorAll("[data-asset]");
 
-const clock = document.querySelector('.clock');
+var svg = document.getElementById("main-svg");
+svg.pauseAnimations();
 
-window.addEventListener('scroll', () => {
-    requestAnimationFrame(moveAssets)
-  }, false);
+const animation = document.querySelector("#t-animation");
 
-  function moveAssets() {
+const animationDur =
+  Number(animation.getAttribute("dur").replace("ms", "")) / 1000;
 
-    const prec = window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+let int = null;
+let lastScrollTop = 0;
 
-    const time = `06:${Math.round(prec * 10) + 12}`;
+const clock = document.querySelector(".clock");
 
-    clock.innerText = time;
+window.addEventListener(
+  "scroll",
+  () => {
+    requestAnimationFrame(moveAssets);
+  },
+  false
+);
 
-    document.body.style.setProperty('--scroll',prec);
+function moveAssets() {
+  const prec =
+    window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
 
-    console.log('prec', prec)
+  const time = `06:${Math.round(prec * 10) + 12}`;
 
-    assets.forEach(asset => {
-      const circle = circles.find(circle => circle.dataset.circle === asset.dataset.asset)
-      const {left, top, width, height} = circle.getBoundingClientRect();
-      asset.style.left = `${left + (width / 2)}px`;
-      asset.style.top = `${top + (height / 2) + 2}px`;
-    })
-  }
+  clock.innerText = time;
+
+  document.body.style.setProperty("--scroll", prec);
+
+  assets.forEach((asset) => {
+    const circle = circles.find(
+      (circle) => circle.dataset.circle === asset.dataset.asset
+    );
+    const { left, top, width, height } = circle.getBoundingClientRect();
+    asset.style.left = `${left + width / 2}px`;
+    asset.style.top = `${top + height / 2 + 2}px`;
+
+    // animateTer(prec);
+  });
+}
+
+function animateTer(prec) {
+  // clearInterval(int);
+  const animationPrec =
+    (animation.getCurrentTime() % animationDur) / animationDur;
+  var st = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (st > lastScrollTop) {
+    console.log("scrolled down starting animation!");
+    svg.unpauseAnimations();
+    animation.beginElement(0);
+    int = setInterval(() => {
+      console.log(
+        "prec",
+        parseFloat(prec).toFixed(1),
+        "animationPrec",
+        parseFloat(animationPrec).toFixed(1)
+      );
+      if (parseFloat(prec).toFixed(1) <= parseFloat(animationPrec).toFixed(1)) {
+        console.log("pausing animation!");
+        clearInterval(int);
+        svg.pauseAnimations();
+      }
+    }, 0.01);
+  } else if (st < lastScrollTop) {
+    console.log("scrolled up", animation.getCurrentTime());
+    animation.beginElement(0);
+    svg.pauseAnimations();
+    svg.setCurrentTime(0);
+    clearInterval(int);
+  } // else was horizontal scroll
+  lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}
