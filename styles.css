@@ -1,3 +1,27 @@
+@keyframes cube {
+  to {
+    /* transform: translateX(5%) translateY(-2%) translateZ(0px) rotateX(75deg)
+      rotateY(0deg) rotateZ(25deg) scale(0.7); */
+    /* transform: matrix3d(0.796956,
+        0.0180461,
+        0.0673488,
+        0,
+        -0.0697246,
+        0.206267,
+        0.7698,
+        0,
+        6.93889e-18,
+        -0.965926,
+        0.258819,
+        0,
+        27.06,
+        -81.18,
+        62,
+        1); */
+    transform: matrix3d(-0.600017, 0.163676, 0.321232, 0, -0.360527, -0.272402, -0.534619, 0, 5.55112e-17, -0.891007, 0.45399, 0, 129.15, -129.15, 229, 1);
+  }
+}
+
 :root {
   --rZ: 25deg;
   --rX: 0deg;
@@ -69,6 +93,7 @@ body>section {
   border: 1px solid #000;
   line-height: 1.7;
   display: inline-block;
+  opacity: 0;
 }
 
 h2 {
@@ -105,6 +130,7 @@ p {
   padding: 6px 14px;
   font-weight: bold;
   border: 1px solid #000;
+  /* opacity: 0; */
 }
 
 .cube-wrap {
@@ -127,28 +153,6 @@ p {
   animation: cube 1s linear;
 }
 
-@keyframes cube {
-  to {
-    /* transform: translateX(5%) translateY(-2%) translateZ(0px) rotateX(75deg)
-      rotateY(0deg) rotateZ(25deg) scale(0.7); */
-    transform: matrix3d(0.796956,
-        0.0180461,
-        0.0673488,
-        0,
-        -0.0697246,
-        0.206267,
-        0.7698,
-        0,
-        6.93889e-18,
-        -0.965926,
-        0.258819,
-        0,
-        27.06,
-        -81.18,
-        62,
-        1);
-  }
-}
 
 .side {
   position: absolute;
@@ -187,9 +191,16 @@ p {
 .asset {
   position: fixed;
   transform: translate(-50%, calc(-100% - 14px));
-  width: clamp(150px, 50vw, 180px);
+  width: clamp(150px, 50vw, 240px);
   text-align: center;
   font-size: 14px;
+  opacity: 0;
+
+  transition: opacity .8s;
+}
+
+.asset.active {
+  opacity: 1;
 }
 
 .asset>div {
@@ -255,4 +266,13 @@ p {
 
 #dots circle:not([data-circle]) {
   opacity: 0;
+}
+
+#dots use {
+  opacity: 0;
+  transition: 0.8s;
+}
+
+#dots use.active {
+  opacity: 1;
 }

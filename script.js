@@ -40,7 +40,33 @@ function moveAssets() {
     asset.style.left = `${left + width / 2}px`;
     asset.style.top = `${top + height / 2 + 2}px`;
 
-    animateTer(prec);
+    const start = asset.dataset.start;
+    const end = asset.dataset.end;
+
+    if (prec >= start && prec <= end) {
+      asset.classList.add("active");
+      circle.nextElementSibling.classList.add("active");
+    } else {
+      asset.classList.remove("active");
+      circle.nextElementSibling.classList.remove("active");
+    }
+
+    // animateTer(prec);
+  });
+}
+
+// observer
+const section = document.querySelector(".territory-observer");
+const teritoryObserver = new IntersectionObserver(updateTeritory, {
+  rootMargin: "-50% 0%",
+});
+teritoryObserver.observe(section);
+
+function updateTeritory(entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      animation.beginElement(0);
+    }
   });
 }
 

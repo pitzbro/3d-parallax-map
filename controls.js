@@ -29,10 +29,10 @@ inputs.forEach((input) => {
 
     document.documentElement.style.setProperty(`--${v}`, inputString);
 
-    var style = window.getComputedStyle(cube);
-    var matrix = style.transform;
+    // var style = window.getComputedStyle(cube);
+    // var matrix = style.transform;
 
-    console.log(matrix);
+    // console.log(matrix);
 
     assets2.forEach((asset) => {
       const circle = circles2.find(

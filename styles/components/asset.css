@@ -1,0 +1,59 @@
+.asset {
+    position: fixed;
+    transform: translate(-50%, calc(-100% - 14px));
+    width: clamp(150px, 50vw, 240px);
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+
+    transition: opacity .8s;
+}
+
+.asset.active {
+    opacity: 1;
+}
+
+.asset>div {
+    position: relative;
+    background-color: #fff;
+    padding: 0 0 10px;
+    box-shadow: 0px 1px 6px 0px rgb(0 0 0 / 50%);
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.asset>div::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, calc(100% - 1px));
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 14px 10px 0 10px;
+    border-color: #fff transparent transparent transparent;
+}
+
+.asset>div>span {
+    padding: 10px 10px 6px;
+    display: block;
+}
+
+.asset>span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.asset video {
+    width: 100%;
+    /* aspect-ratio: 1 / 1; */
+    object-fit: cover;
+}
+
+.asset img {
+    width: 100%;
+    /* aspect-ratio: 1 / 1; */
+    object-fit: cover;
+}

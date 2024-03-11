@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="military">
     <div id="clock" class="clock">06:12</div>
     <div id="controls" class="controls">
         <label for="rZ">rotateZ: <span>0deg</span></label>
@@ -23,7 +23,7 @@
         <input type="range" name="tX" id="" min="-100" max="100">
         <label for="tZ">translateZ: <span>0px</span></label>
         <input type="range" name="tZ" id="" value="0" min="-1000" max="4000">
-        <label for="sC">scale: <span>1</span></label>
+        <label for="sC">scale: <span>0.7</span></label>
         <input type="range" value="1" name="sC" id="" min="0.5" max="7" step="0.1">
 
         <button class="btn-military">Military Mode</button>
@@ -37,14 +37,18 @@
 
                 <svg viewBox="0 0 700 700" id="main-svg">
 
-                    <g id="animated-dot" style="mix-blend-mode: darken;">
-                        <circle cx="0" cy="0" r="2.2" fill="#DA0A08" />
-                        <circle cx="0" cy="0" r="0" fill="#DA0A08">
-                            <animate attributeName="r" from="0" to="20" dur="2s" repeatCount="indefinite" begin="0" />
-                            <animate attributeName="opacity" dur="2s" values="1;0;0" keyTimes="0;.5;1"
-                                repeatCount="indefinite" begin="0" />
-                        </circle>
-                    </g>
+                    <defs>
+                        <g id="animated-dot" style="mix-blend-mode: darken;">
+                            <circle cx="0" cy="0" r="2.2" fill="#DA0A08" />
+                            <circle cx="0" cy="0" r="0" fill="#DA0A08">
+                                <animate attributeName="r" from="0" to="20" dur="2s" repeatCount="indefinite"
+                                    begin="0" />
+                                <animate attributeName="opacity" dur="2s" values="1;0;0" keyTimes="0;.5;1"
+                                    repeatCount="indefinite" begin="0" />
+                            </circle>
+                        </g>
+                    </defs>
+
 
                     <g id="territories" fill="#366638">
                         <g>
@@ -139,8 +143,7 @@
 
                     <g id="dots">
 
-                        <circle cx="467.004" cy="263.026" r="0" data-circle="front" />
-                        <use href="#animated-dot" x="467.004" y="263.026" />
+
                         <circle cx="238.151" cy="546.03" r="2.2" />
                         <circle cx="264.169" cy="582.043" r="2.2" />
                         <circle cx="270.083" cy="535.054" r="2.2" />
@@ -150,9 +153,6 @@
                         <circle cx="334.448" cy="514.505" r="2.2" />
                         <circle cx="354.948" cy="492.75" r="2.2" />
                         <circle cx="361.815" cy="528.658" r="2.2" />
-                        <circle cx="345.179" cy="532.232" r="0" data-circle="left" />
-                        <use href="#animated-dot" x="345.179" y="532.232" />
-                        <circle cx="326.201" cy="403.973" r="2.2" />
                         <circle cx="320.477" cy="442.441" r="2.2" />
                         <circle cx="319.332" cy="426.967" r="2.2" />
                         <circle cx="490.743" cy="304.296" r="2.2" />
@@ -167,14 +167,29 @@
                         <circle cx="499.258" cy="382.251" r="2.2" />
                         <circle cx="439.897" cy="215.877" r="2.2" />
                         <circle cx="484.356" cy="252.952" r="2.2" />
-                        <circle cx="436.133" cy="298.978" r="2.2" />
                         <circle cx="402.506" cy="308.749" r="2.2" />
                         <circle cx="401.56" cy="356.868" r="2.2" />
                         <circle cx="385.071" cy="371.466" r="2.2" />
                         <circle cx="504.064" cy="455.566" r="2.2" />
+                        <circle cx="378.485" cy="280.47" r="0" />
+                        <circle cx="345.179" cy="532.232" r="0" />
                         <circle cx="330.78" cy="457.993" r="2.2" />
-                        <circle cx="378.485" cy="280.47" r="0" data-circle="back" />
-                        <use href="#animated-dot" x="378.485" y="280.47" />
+
+                        <g class="circle-group">
+                            <circle cx="467.004" cy="263.026" r="0" data-circle="nir" />
+                            <use href="#animated-dot" x="467.004" y="263.026" />
+                        </g>
+
+
+                        <g class="circle-group">
+                            <circle cx="436.133" cy="298.978" r="0" data-circle="gaza" />
+                            <use href="#animated-dot" x="436.133" y="298.978" />
+                        </g>
+
+                        <g class="circle-group">
+                            <circle cx="326.201" cy="403.973" r="0" data-circle="kisufim" />
+                            <use href="#animated-dot" x="326.201" y="403.973" />
+                        </g>
                     </g>
 
 
@@ -186,7 +201,7 @@
         </div>
     </div>
 
-    <div class="asset" data-asset="left">
+    <div class="asset" data-asset="kisufim" data-start="0" data-end="0.78">
         <div>
             <video muted="" loop autoplay="" disablepictureinpicture="" disableremoteplayback="" playsinline=""
                 preload="auto">
@@ -194,13 +209,15 @@
 
                 <p>Your user agent does not support the HTML5 Video element.</p>
             </video>
-            תצפיתניות מזהות מחבלים שועטים לגדר, ומפעילות רואה-יורה עד שהתחמושת נגמרת
+            <span>
+                תצפיתניות מזהות מחבלים שועטים לגדר, ומפעילות רואה-יורה עד שהתחמושת נגמרת
+            </span>
         </div>
 
         <span>מוצב כיסופים</span>
     </div>
 
-    <div class="asset" data-asset="back">
+    <div class="asset" data-asset="nir" data-start="0.9" data-end="1">
         <div>
             <span>
                 הרבש"צית ענבל ליברמן מקפיצה את כיתת הכוננות ופותחת את הנשקייה
@@ -209,7 +226,7 @@
         <span>ניר עם</span>
     </div>
 
-    <div class="asset" data-asset="front">
+    <div class="asset" data-asset="gaza" data-start="0.5" data-end="1">
         <div>
             <img src="/images/image_005.jpg" alt="" srcset="">
 
@@ -225,12 +242,12 @@
 
 
 
-    <!-- <section>
+    <section class="territory-observer">
         <h2>06:12</h2>
         <p>
             מטח הרקטות הגדול אי פעם לעבר מדינת ישראל. בחסותו פורצים מחבלים לישראל
         </p>
-    </section> -->
+    </section>
     <script src="script.js"></script>
     <script src="controls.js"></script>
 </body>

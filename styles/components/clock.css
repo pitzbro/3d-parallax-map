@@ -1,0 +1,14 @@
+.clock {
+    z-index: 11;
+    top: 0;
+    left: 0;
+    position: fixed;
+    font-family: monospace;
+    font-size: 28px;
+    background-color: #fff;
+    margin: 20px;
+    padding: 6px 14px;
+    font-weight: bold;
+    border: 1px solid #000;
+    /* opacity: 0; */
+}

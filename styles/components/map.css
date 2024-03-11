@@ -1,0 +1,60 @@
+.map {
+    position: sticky;
+    top: 0;
+    /* width: 100%; */
+    height: 100vh;
+    overflow: hidden;
+    perspective: 800px;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
+
+.map-container {
+    /* grid-area: 1 / 1 / -1 / -1;
+    height: 100vh; */
+
+    width: 300vmin;
+    height: 300vmin;
+
+    display: grid;
+
+    transform: translateX(var(--tX)) translateY(var(--tY)) translateZ(var(--tZ)) rotateX(var(--rX)) rotateY(var(--rY)) rotateZ(var(--rZ)) scale(var(--sC));
+    animation: cube 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+
+    transform-style: preserve-3d;
+}
+
+.map-panel {
+    display: grid;
+}
+
+.map-panel>* {
+    grid-area: 1 / 1 / -1 / -1;
+    width: 100%;
+    height: 100%;
+}
+
+/* elements */
+
+#labels {
+    opacity: 0;
+}
+
+use[href="#animated-dot"] {
+    mix-blend-mode: darken;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+use[href="#animated-dot"].active {
+    opacity: 1;
+}
+
+#dots circle:not([data-circle]) {
+    opacity: 0;
+}

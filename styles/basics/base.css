@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    min-height: 500vh;
+    background-color: #b8b8b8;
+    font-family: "Open Sans Hebrew", "Helvetica Neue", tahoma, Helvetica, Arial,
+        sans-serif;
+    color: #2d2d2d;
+
+    transition: background-color 2s;
+}
+
+body.military {
+    background-color: #cbcfbd;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body.military #territories {
+    fill: #444;
+}
+
+body.military .gaza-teritory {
+    fill: rgb(68 68 68 / 42%);
+}
+
+.military-img {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+
+body.military .military-img {
+    opacity: 1;
+}
+
+/* g#roads {
+    transition: opacity 2s;
+}
+
+body.military g#roads {
+    opacity: 0;
+} */
+
+/* g#roads path {
+    stroke: #636363;
+} */
+
+body>section {
+    position: relative;
+    background-color: #fff;
+    max-width: 710px;
+    padding: 20px;
+    margin: 100vh 40px 20px auto;
+    border: 1px solid #000;
+    line-height: 1.7;
+    display: inline-block;
+    opacity: 0;
+}
+
+h2 {
+    font-family: monospace;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 0.4em;
+    line-height: 1;
+}
+
+p {
+    margin: 0 0 1em;
+}
